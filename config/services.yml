@@ -1,0 +1,35 @@
+services:
+    tyrghen.lastpollonindex.listener:
+        class: tyrghen\lastpollonindex\event\listener
+        arguments:
+            - '@user'
+            - '@language'
+            - '@auth'
+            - '@request'
+            - '@config'
+            - '@dbal.conn'
+            - '@template'
+            - '@dispatcher'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+            - '@?phpbb.collapsiblecategories.operator'
+        tags:
+            - { name: event.listener }
+
+    tyrghen.lastpollonindex.controller.acp:
+        class: tyrghen\lastpollonindex\controller\acp_controller
+        arguments:
+            - '@config'
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@tyrghen.lastpollonindex.core.common'
+
+    tyrghen.lastpollonindex.core.common:
+        class: tyrghen\lastpollonindex\core\common
+        arguments:
+            - '@auth'
+            - '@user'
+            - '@dbal.conn'

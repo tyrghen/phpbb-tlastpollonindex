@@ -1,0 +1,47 @@
+{% include 'overall_header.html' %}
+
+<h1>{{ lang('ACP_TLASTPOLLONINDEX_TITLE') }}</h1>
+
+{% if S_ERROR %}
+	<div class="errorbox">
+		<h3>{{ lang('WARNING') }}</h3>
+		<p>{{ ERROR_MSG }}</p>
+	</div>
+{% endif %}
+
+<form id="tyrghen_lastpollonindex_acp" name="tyrghen_lastpollonindex_acp" method="post" action="{{ U_ACTION }}">
+
+	<fieldset>
+		<legend>{{ lang('SETTINGS') }}</legend>
+		<dl>
+			<dt><label for="tyrghen_lastpollonindex_active">{{ lang('ACP_TLASTPOLLONINDEX_ISACTIVE') ~ lang('COLON') }}</label></dt>
+			<dd><label><input type="radio" class="radio" name="tyrghen_lastpollonindex_active" value="1"{% if TYRGHEN_TLASTPOLLONINDEX_ISACTIVE %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="tyrghen_lastpollonindex_active" value="0"{% if not TYRGHEN_TLASTPOLLONINDEX_ISACTIVE %} checked="checked"{% endif %} /> {{ lang('NO') }}</label></dd>
+		</dl>
+		<dl>
+			<dt><label for="tyrghen_lastpollonindex_debug">{{ lang('ACP_TLASTPOLLONINDEX_DEBUG') ~ lang('COLON') }}</label></dt>
+			<dd><label><input type="radio" class="radio" name="tyrghen_lastpollonindex_debug" value="1"{% if TYRGHEN_TLASTPOLLONINDEX_DEBUG %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="tyrghen_lastpollonindex_debug" value="0"{% if not TYRGHEN_TLASTPOLLONINDEX_DEBUG %} checked="checked"{% endif %} /> {{ lang('NO') }}</label></dd>
+		</dl>
+		<dl>
+			<dt><label for="tyrghen_lastpollonindex_show_voters">{{ lang('ACP_TLASTPOLLONINDEX_SHOWVOTERS') ~ lang('COLON') }}</label></dt>
+			<dd><label><input type="radio" class="radio" name="tyrghen_lastpollonindex_show_voters" value="1"{% if TYRGHEN_TLASTPOLLONINDEX_SHOWVOTERS %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="tyrghen_lastpollonindex_show_voters" value="0"{% if not TYRGHEN_TLASTPOLLONINDEX_SHOWVOTERS %} checked="checked"{% endif %} /> {{ lang('NO') }}</label></dd>
+		</dl>
+		<dl>
+			<dt><label for="tyrghen_lastpollonindex_poll_forum">{{ lang('ACP_TLASTPOLLONINDEX_POLLFORUM') ~ lang('COLON') }}</label></dt>
+			<dd><select id="forum" name="tyrghen_lastpollonindex_poll_forum" value="{{ TYRGHEN_TLASTPOLLONINDEX_POLLFORUM }}">{{ TYRGHEN_TLASTPOLLONINDEX_POLLFORUMS }}</select></dd>
+		</dl>
+		<dl>
+			<dt><label for="tyrghen_lastpollonindex_poll_expiry">{{ lang('ACP_TLASTPOLLONINDEX_POLLEXPIRY') ~ lang('COLON') }}</label></dt>
+			<dd><input type="text" name="tyrghen_lastpollonindex_poll_expiry" value="{{ TYRGHEN_TLASTPOLLONINDEX_POLLEXPIRY }}"/></dd>
+		</dl>
+	</fieldset>
+
+	<fieldset class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />
+		{{ S_FORM_TOKEN }}
+	</fieldset>
+</form>
+
+{% include 'overall_footer.html' %}
